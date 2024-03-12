@@ -1,0 +1,36 @@
+* Opis
+Celem zadania jest przygotowanie aplikacji w .NET MAUI "System zarzadzania kolekcjonerstwem"
+
+Opis aplikacji: Aplikacja do zarzadzania róznymi rodzajami kolekcji (ksiazki, gry na konsole, gry planszowe,
+zestawy lego, karty TCG, plyty z muzyka, itp.)
+
+Na glównej stronie aplikacji powinien byc dostep do wszystkich kolekcji które posiada uzytkownik oraz mozliwosc dodania
+nowej kolekcji.
+Po wejsciu w kolekcje mamy zobaczyc wylistowane lub stabelaryzowane informacje na temat posiadanej kolekcji.
+Ma takze byc mozliwosc jej edycji (dodawanie elementów, usuwanie oraz modyfikacja).
+
+* Wymagania
+
+- [-] Na ocenê dopuszczaj±c±
+    - [ ] realizacja zapisu informacji podawanych przez uzytkownika w plikach tekstowych (.txt) jak równiez
+      automatyczne wczytanie informacji o kolekcjach przy starcie aplikacji
+    - [ ] brak wykorzystania bibliotek do obslugi zapisu danych takich jak json, xml, csv, itp.
+      Caly zapisy oraz format danych powinien byc realizowany samodzielnie
+    - [ ] mozliwosc edycji konkretnego elementu z kolekcji (nie calej listy naraz)
+    - [ ] w debugu powinna wyswietlic sie sciezka do danych aplikacji
+    - [X] Projekt umieszczony na GITHUB z linkiem wyslanym na forms: https://forms.office.com/e/dSE5icmmzQ
+- [ ] Na wy¿sze oceny
+    - [ ] Ostylowanie w dowolny sposób aplikacji tak aby byla przejrzysta i zgodna z teoria barw.
+      Mozna skorzystac z np. Adobe Colors
+    - [ ] Prezentowanie w widoku kolekcji innych danych poza nazwami
+      (np. ceny przedmiotu, statusu - nowy, uzyty, na sprzedaz, sprzedany, chce kupic, itp., oceny w skali 1-10 jak bardzo
+      posiadacz jest z tego zadowolony, komentarz)
+    - [ ] Mozliwosc dodania swojej kolumny z danymi do kolekcji zgodnie z zyczeniem uzytkownika.
+      Moze byc to dana tekstowa, liczbowa lub zestaw wartosci do wyboru.
+    - [ ] Wyszarzenie i przeniesienie na koniec kolekcji elementów sprzedanych
+    - [ ] Mozliwosc dodania grafiki dla przedmiotu
+    - [ ] Upewnienie sie czy uzytkownik chce podac 2 raz taki sam element
+    - [ ] Mozliwosc exportu danych i importu danych o jednej kolekcji bez stratnie poprzez laczenie tego co juz jest
+      z danymi, które otrzymuje program
+    - [ ] Mozliwosc generowania ekranu z podsumowaniem dla danej kolekcji z iloscia posiadanych przedmiotów, iloscia
+    przedmiotów sprzedanych i tych które chce sprzedac
