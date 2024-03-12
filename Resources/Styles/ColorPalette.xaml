@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xaml-comp compile="true" ?>
+<!-- Generated from https://coolors.co with custom additions -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+  <Color x:Key="Gunmetal">#30343F</Color>
+  <Color x:Key="GunmetalLight">#414655</Color>
+  <Color x:Key="GunmetalLight2">#52596C</Color>
+
+  <SolidColorBrush x:Key="GunmetalBrush" Color="{StaticResource Gunmetal}"/>
+  <SolidColorBrush x:Key="GunmetalLight" Color="{StaticResource GunmetalLight}"/>
+  <SolidColorBrush x:Key="GunmetalLight2" Color="{StaticResource GunmetalLight2}"/>
+
+  <Color x:Key="GhostWhite">#FAFAFF</Color>
+  <SolidColorBrush x:Key="GhostWhiteBrush" Color="{StaticResource GhostWhite}"/>
+
+  <Color x:Key="Periwinkle">#E4D9FF</Color>
+  <Color x:Key="PeriwinkleDark">#D6C5FF</Color>
+  <Color x:Key="PeriwinkleDark2">#C8B2FF</Color>
+
+  <SolidColorBrush x:Key="PeriwinkleBrush" Color="{StaticResource Periwinkle}"/>
+  <SolidColorBrush x:Key="PeriwinkleDarkBrush" Color="{StaticResource PeriwinkleDark}"/>
+  <SolidColorBrush x:Key="PeriwinkleDark2Brush" Color="{StaticResource PeriwinkleDark2}"/>
+
+  <Color x:Key="DelftBlue">#273469</Color>
+  <Color x:Key="DelftBlueLight">#324286</Color>
+  <Color x:Key="DelftBlueLight2">#3C50A2</Color>
+
+  <SolidColorBrush x:Key="DelftBlueBrush" Color="{StaticResource DelftBlue}"/>
+  <SolidColorBrush x:Key="DelftBlueLightBrush" Color="{StaticResource DelftBlueLight}"/>
+  <SolidColorBrush x:Key="DelftBlueLight2Brush" Color="{StaticResource DelftBlueLight2}"/>
+
+  <Color x:Key="SpaceCadet">#1E2749</Color>
+  <Color x:Key="SpaceCadetLight">#293665</Color>
+  <Color x:Key="SpaceCadetLight2">#2F3D73</Color>
+
+  <SolidColorBrush x:Key="SpaceCadetBrush" Color="{StaticResource SpaceCadet}"/>
+  <SolidColorBrush x:Key="SpaceCadetLightBrush" Color="{StaticResource SpaceCadetLight}"/>
+  <SolidColorBrush x:Key="SpaceCadetLight2Brush" Color="{StaticResource SpaceCadetLight2}"/>
+
+  <Color x:Key="DarkGray">#272727</Color>
+
+  <SolidColorBrush x:Key="DarkGrayBrush" Color="{StaticResource DarkGray}"/>
+</ResourceDictionary>
