@@ -13,6 +13,7 @@ namespace CollectionsManager.Models
 		private Guid collectionRefId = Guid.NewGuid();
 		private string name = string.Empty;
 		private ObservableCollection<CollectionItem> items = new ObservableCollection<CollectionItem>();
+		private ObservableCollection<CollectionItemStatus> itemStatuses = new ObservableCollection<CollectionItemStatus>(DEFAULT_ITEM_STATUSES);
 
 		public Guid CollectionRefId
 		{
@@ -39,16 +40,32 @@ namespace CollectionsManager.Models
 			get => items;
 		}
 
-		public event PropertyChangedEventHandler? PropertyChanged;
-
-		public static string GetCollectionPath(Collection collection)
+		public ObservableCollection<CollectionItemStatus> ItemStatuses
 		{
-			return Path.Combine(AppConsts.CollectionsPath, collection.CollectionRefId.ToString());
+			get => itemStatuses;
 		}
 
-		public static string GetCollectionImagesPath(Collection collection)
+		public static List<CollectionItemStatus> DEFAULT_ITEM_STATUSES = new List<CollectionItemStatus>
 		{
-			return Path.Combine(GetCollectionPath(collection), "Images");
+			new CollectionItemStatus()
+			{
+				Name = "Nowy"
+			},
+			new CollectionItemStatus()
+			{
+				Name = "Używany"
+			}
+		};
+
+		public event PropertyChangedEventHandler? PropertyChanged;
+
+		public static string GetCollectionPath(Collection collection, string? basePath)
+		{
+			string _basePath = (!string.IsNullOrWhiteSpace(basePath))
+				? basePath
+				: AppConsts.CollectionsPath;
+
+			return Path.Combine(_basePath, collection.CollectionRefId.ToString());
 		}
 
 		private void OnPropertyChanged(string? propertyName = null)

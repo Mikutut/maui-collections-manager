@@ -12,15 +12,15 @@ Ma takze byc mozliwosc jej edycji (dodawanie elementów, usuwanie oraz modyfikacj
 * Wymagania
 
 - [-] Na ocenê dopuszczaj±c±
-    - [ ] realizacja zapisu informacji podawanych przez uzytkownika w plikach tekstowych (.txt) jak równiez
+    - [X] realizacja zapisu informacji podawanych przez uzytkownika w plikach tekstowych (.txt) jak równiez
       automatyczne wczytanie informacji o kolekcjach przy starcie aplikacji
-    - [ ] brak wykorzystania bibliotek do obslugi zapisu danych takich jak json, xml, csv, itp.
+    - [X] brak wykorzystania bibliotek do obslugi zapisu danych takich jak json, xml, csv, itp.
       Caly zapisy oraz format danych powinien byc realizowany samodzielnie
     - [ ] mozliwosc edycji konkretnego elementu z kolekcji (nie calej listy naraz)
-    - [ ] w debugu powinna wyswietlic sie sciezka do danych aplikacji
+    - [X] w debugu powinna wyswietlic sie sciezka do danych aplikacji
     - [X] Projekt umieszczony na GITHUB z linkiem wyslanym na forms: https://forms.office.com/e/dSE5icmmzQ
-- [ ] Na wy¿sze oceny
-    - [ ] Ostylowanie w dowolny sposób aplikacji tak aby byla przejrzysta i zgodna z teoria barw.
+- [-] Na wy¿sze oceny
+    - [X] Ostylowanie w dowolny sposób aplikacji tak aby byla przejrzysta i zgodna z teoria barw.
       Mozna skorzystac z np. Adobe Colors
     - [ ] Prezentowanie w widoku kolekcji innych danych poza nazwami
       (np. ceny przedmiotu, statusu - nowy, uzyty, na sprzedaz, sprzedany, chce kupic, itp., oceny w skali 1-10 jak bardzo

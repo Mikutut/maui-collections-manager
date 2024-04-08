@@ -6,10 +6,14 @@
   <Color x:Key="Gunmetal">#30343F</Color>
   <Color x:Key="GunmetalLight">#414655</Color>
   <Color x:Key="GunmetalLight2">#52596C</Color>
+  <Color x:Key="GunmetalDark">#282B34</Color>
+  <Color x:Key="GunmetalDark2">#1F2229</Color>
 
   <SolidColorBrush x:Key="GunmetalBrush" Color="{StaticResource Gunmetal}"/>
-  <SolidColorBrush x:Key="GunmetalLight" Color="{StaticResource GunmetalLight}"/>
-  <SolidColorBrush x:Key="GunmetalLight2" Color="{StaticResource GunmetalLight2}"/>
+  <SolidColorBrush x:Key="GunmetalLightBrush" Color="{StaticResource GunmetalLight}"/>
+  <SolidColorBrush x:Key="GunmetalLight2Brush" Color="{StaticResource GunmetalLight2}"/>
+  <SolidColorBrush x:Key="GunmetalDarkBrush" Color="{StaticResource GunmetalDark}"/>
+  <SolidColorBrush x:Key="GunmetalDark2Brush" Color="{StaticResource GunmetalDark2}"/>
 
   <Color x:Key="GhostWhite">#FAFAFF</Color>
   <SolidColorBrush x:Key="GhostWhiteBrush" Color="{StaticResource GhostWhite}"/>
@@ -38,7 +42,31 @@
   <SolidColorBrush x:Key="SpaceCadetLightBrush" Color="{StaticResource SpaceCadetLight}"/>
   <SolidColorBrush x:Key="SpaceCadetLight2Brush" Color="{StaticResource SpaceCadetLight2}"/>
 
+  <Color x:Key="AtomicTangerine">#DE8f6E</Color>
+  <Color x:Key="AtomicTangerineLight">#e5a88e</Color>
+  <Color x:Key="AtomicTangerineLight2">#edc0ae</Color>
+  <Color x:Key="AtomicTangerineDark">#d36a3e</Color>
+  <Color x:Key="AtomicTangerineDark2">#bf572b</Color>
+
+  <SolidColorBrush x:Key="AtomicTangerineBrush" Color="{StaticResource AtomicTangerine}" />
+  <SolidColorBrush x:Key="AtomicTangerineLightBrush" Color="{StaticResource AtomicTangerineLight}" />
+  <SolidColorBrush x:Key="AtomicTangerineLight2Brush" Color="{StaticResource AtomicTangerineLight2}" />
+  <SolidColorBrush x:Key="AtomicTangerineDarkBrush" Color="{StaticResource AtomicTangerineDark}" />
+  <SolidColorBrush x:Key="AtomicTangerineDark2Brush" Color="{StaticResource AtomicTangerineDark2}" />
+
   <Color x:Key="DarkGray">#272727</Color>
+  <Color x:Key="Dark2Gray">#1D1D1D</Color>
 
   <SolidColorBrush x:Key="DarkGrayBrush" Color="{StaticResource DarkGray}"/>
+  <SolidColorBrush x:Key="Dark2GrayBrush" Color="{StaticResource Dark2Gray}"/>
+  
+  <Color x:Key="White">#FFFFFF</Color>
+
+  <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
+
+  <Color x:Key="Black">#000000</Color>
+  <Color x:Key="OffBlack">#131313</Color>
+
+  <SolidColorBrush x:Key="BlackBrush" Color="{StaticResource Black}"/>
+  <SolidColorBrush x:Key="OffBlackBrush" Color="{StaticResource OffBlack}"/>
 </ResourceDictionary>

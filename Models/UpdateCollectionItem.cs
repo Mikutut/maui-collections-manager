@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace CollectionsManager.Models
 {
-	public class CollectionItem : INotifyPropertyChanged
+	public class UpdateCollectionItem : INotifyPropertyChanged
 	{
-		private Guid collectionItemRefId = Guid.NewGuid();
-		private Guid collectionRefId = Guid.Empty;
+		private Guid collectionItemRefId;
+		private Guid collectionRefId;
+		private Guid? newCollectionRefId;
 		private ObservableCollection<CollectionItemStatus> statuses = new ObservableCollection<CollectionItemStatus>();
 		private string name = string.Empty;
 		private byte[]? image;
@@ -19,7 +20,6 @@ namespace CollectionsManager.Models
 		private uint rating = 0;
 		private string? comment = null;
 		private bool isForSale = false;
-		private bool isSold = false;
 
 		public Guid CollectionItemRefId
 		{
@@ -29,6 +29,11 @@ namespace CollectionsManager.Models
 				collectionItemRefId = value;
 				OnPropertyChanged("CollectionItemRefId");
 			}
+		}
+
+		public ObservableCollection<CollectionItemStatus> Statuses
+		{
+			get => statuses;
 		}
 
 		public Guid CollectionRefId
@@ -41,9 +46,14 @@ namespace CollectionsManager.Models
 			}
 		}
 
-		public ObservableCollection<CollectionItemStatus> Statuses
+		public Guid? NewCollectionRefId
 		{
-			get => statuses;
+			get => newCollectionRefId;
+			set
+			{
+				newCollectionRefId = value;
+				OnPropertyChanged("NewCollectionRefId");
+			}
 		}
 
 		public string Name
@@ -106,60 +116,9 @@ namespace CollectionsManager.Models
 			}
 		}
 
-		public bool IsSold
-		{
-			get => isSold;
-			set
-			{
-				isSold = value;
-				OnPropertyChanged("IsSold");
-			}
-		}
-
-		public Stream? GetImageStream()
-		{
-			if(image != null)
-			{
-				return new MemoryStream(image);
-			}
-			else
-			{
-				return null;
-			}
-		}
-
 		public event PropertyChangedEventHandler? PropertyChanged;
 
-		public static string? ConvertImageToBase64(CollectionItem item)
-		{
-			if(item.Image == null)
-			{
-				return null;
-			}
-
-			string b64 = Convert.ToBase64String(item.Image);
-
-			return b64;
-		}
-
-		public static byte[] ConvertBase64ToImage(string b64)
-		{
-			byte[] image = Convert.FromBase64String(b64);
-
-			using (MemoryStream ms = new MemoryStream(image))
-			{
-				var imgSrc = ImageSource.FromStream(() => ms);
-
-				if(imgSrc.IsEmpty)
-				{
-					throw new ArgumentException("Provided Base64 string is not a valid image.");
-				}
-			}
-
-			return image;
-		}
-
-		private void OnPropertyChanged(string? propertyName = null)
+		void OnPropertyChanged(string? propertyName = null)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
