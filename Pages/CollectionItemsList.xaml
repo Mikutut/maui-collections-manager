@@ -17,13 +17,14 @@
     RowDefinitions="Auto, *"
     ColumnDefinitions="*"
     RowSpacing="20">
-    <Grid
-      x:Name="collectionItemsList_buttonsGrid"
+    <StackLayout
+      x:Name="collectionItemsList_buttonsLayout"
       Grid.Row="0"
       Grid.Column="0"
-      RowDefinitions="*"
-      ColumnDefinitions="*"
-      ColumnSpacing="10">
+      Orientation="Horizontal"
+      Spacing="10"
+      HorizontalOptions="Center"
+      VerticalOptions="Fill">
       <Button
         x:Name="collectionItemsList_newCollectionButton"
         Style="{StaticResource PrimaryButton}"
@@ -33,8 +34,34 @@
         FontSize="Medium"
         Margin="10"
         MaximumWidthRequest="250"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
         Clicked="collectionItemsList_newCollectionButton_Clicked" />
-    </Grid>
+      <Button
+        x:Name="collectionItemsList_summaryButton"
+        Style="{StaticResource SecondaryButton}"
+        Grid.Row="0"
+        Grid.Column="1"
+        Text="Podsumowanie"
+        FontSize="Medium"
+        Margin="10"
+        MaximumWidthRequest="250"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        Clicked="collectionItemsList_summaryButton_Clicked" />
+      <Button
+        x:Name="collectionItemsList_exportButton"
+        Style="{StaticResource TertiaryButton}"
+        Grid.Row="0"
+        Grid.Column="1"
+        Text="Eksportuj kolekcję"
+        FontSize="Medium"
+        Margin="10"
+        MaximumWidthRequest="250"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        Clicked="collectionItemsList_exportButton_Clicked" />
+    </StackLayout>
     <CollectionView
       x:Name="collectionItemsList_collectionView"
       Grid.Row="1"
@@ -43,7 +70,7 @@
       <CollectionView.ItemsLayout>
         <LinearItemsLayout
           Orientation="Vertical"
-          ItemSpacing="20" />
+          ItemSpacing="5" />
       </CollectionView.ItemsLayout>
       <CollectionView.EmptyView>
         <StackLayout
@@ -65,8 +92,7 @@
         <Grid
           x:Name="collectionItemsList_collectionViewHeader"
           RowDefinitions="*"
-          ColumnDefinitions="*, *, *, *, *"
-          ColumnSpacing="5">
+          ColumnDefinitions="*, *, *, *, *">
           <Label
             x:Name="collectionItemsList_headerNameLabel"
             Grid.Row="0"

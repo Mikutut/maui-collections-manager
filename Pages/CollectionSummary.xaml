@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionsManager.Pages.CollectionSummary"
+             Title="Podsumowanie kolekcji"
+             x:Name="collectionSummary">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem
+      x:Name="collectionSummary_goBackButton"
+      IconImageSource="{FontImageSource Glyph=,FontFamily=FontAwesomeSolid}"
+      Text="Powrót"
+      Clicked="collectionSummary_goBackButton_Clicked" />
+  </ContentPage.ToolbarItems>
+  <Grid
+    x:Name="collectionSummary_mainGrid"
+    RowDefinitions="*, *"
+    ColumnDefinitions="*"
+    RowSpacing="20">
+    <Label
+      x:Name="collectionSummary_title"
+      Grid.Row="0"
+      Grid.Column="0"
+      Text="{Binding Collection.Name}"
+      FontSize="64"
+      TextColor="{x:StaticResource AtomicTangerine}"
+      HorizontalTextAlignment="Center"
+      VerticalTextAlignment="Center"
+      HorizontalOptions="Center"
+      VerticalOptions="Center" />
+    <Grid
+      x:Name="collectionSummary_statsGrid"
+      Grid.Row="1"
+      Grid.Column="0"
+      RowDefinitions="*, *, *"
+      ColumnDefinitions="*, *"
+      ColumnSpacing="20"
+      RowSpacing="10">
+      <Label
+        x:Name="collectionSummary_totalCountLabel"
+        Grid.Row="0"
+        Grid.Column="0"
+        Text="Łączna ilość elementów"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center" />
+      <Label
+        x:Name="collectionSummary_totalCountValue"
+        Grid.Row="0"
+        Grid.Column="1"
+        Text="{Binding TotalCount}"
+        TextColor="{x:StaticResource AtomicTangerineLight}"
+        FontSize="Large"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center" />
+      <Label
+        x:Name="collectionSummary_forSaleLabel"
+        Grid.Row="1"
+        Grid.Column="0"
+        Text="Ilość przedmiotów na sprzedaż"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center" />
+      <Label
+        x:Name="collectionSummary_forSaleValue"
+        Grid.Row="1"
+        Grid.Column="1"
+        Text="{Binding ForSaleCount}"
+        TextColor="{x:StaticResource AtomicTangerineLight}"
+        FontSize="Large"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center" />
+      <Label
+        x:Name="collectionSummary_soldLabel"
+        Grid.Row="2"
+        Grid.Column="0"
+        Text="Ilość przedmiotów sprzedanych"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center" />
+      <Label
+        x:Name="collectionSummary_soldValue"
+        Grid.Row="2"
+        Grid.Column="1"
+        Text="{Binding SoldCount}"
+        TextColor="{x:StaticResource AtomicTangerineLight}"
+        FontSize="Large"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center" />
+    </Grid>
+  </Grid>
+</ContentPage>

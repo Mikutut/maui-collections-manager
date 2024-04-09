@@ -47,6 +47,7 @@ namespace CollectionsManager
 				.AddSingleton<CollectionItemsList>()
 				.AddSingleton<NewCollectionItemPage>()
 				.AddSingleton<UpdateCollectionItemPage>()
+				.AddSingleton<CollectionSummary>()
 				.AddSingleton<MainPage>();
 
 			return builder;

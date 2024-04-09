@@ -38,11 +38,21 @@ namespace CollectionsManager.Models
 		public ObservableCollection<CollectionItem> Items
 		{
 			get => items;
+			set
+			{
+				items = value;
+				OnPropertyChanged("Items");
+			}
 		}
 
 		public ObservableCollection<CollectionItemStatus> ItemStatuses
 		{
 			get => itemStatuses;
+			set
+			{
+				itemStatuses = value;
+				OnPropertyChanged("ItemStatuses");
+			}
 		}
 
 		public static List<CollectionItemStatus> DEFAULT_ITEM_STATUSES = new List<CollectionItemStatus>

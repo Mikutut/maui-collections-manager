@@ -24,5 +24,6 @@ namespace CollectionsManager.Services
 		public void SaveCollectionsToFile(string? path);
 		public Collection LoadCollectionFromFile(string path);
 		public void LoadCollectionsFromFile(string? path);
+		public bool CheckIfCollectionItemExists(Collection collection, string itemName);
 	}
 }

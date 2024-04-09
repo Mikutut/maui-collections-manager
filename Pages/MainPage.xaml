@@ -17,16 +17,35 @@
       FontSize="Title"
       HorizontalTextAlignment="Center"
       VerticalTextAlignment="Center" />
-    <Button
-      x:Name="mainPage_newCollectionButton"
-      Style="{StaticResource PrimaryButton}"
+    <StackLayout
+      x:Name="mainPage_buttonsLayout"
+      Orientation="Horizontal"
+      Spacing="20"
       Grid.Row="1"
       Grid.Column="0"
-      Text="Dodaj kolekcję"
-      FontSize="Medium"
-      Margin="10"
-      MaximumWidthRequest="200"
-      Clicked="mainPage_newCollectionButton_Clicked" />
+      VerticalOptions="Fill"
+      HorizontalOptions="Center">
+      <Button
+        x:Name="mainPage_newCollectionButton"
+        Style="{StaticResource PrimaryButton}"
+        Text="Dodaj kolekcję"
+        FontSize="Medium"
+        Margin="10"
+        MaximumWidthRequest="200"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        Clicked="mainPage_newCollectionButton_Clicked" />
+      <Button
+        x:Name="mainPage_importButton"
+        Style="{StaticResource TertiaryButton}"
+        Text="Importuj kolekcję"
+        FontSize="Medium"
+        Margin="10"
+        MaximumWidthRequest="250"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        Clicked="mainPage_importButton_Clicked" />
+    </StackLayout>
     <CollectionView
       x:Name="mainPage_collectionsView"
       Grid.Row="2"

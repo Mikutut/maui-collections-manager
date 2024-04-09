@@ -32,4 +32,9 @@
         ContentTemplate="{DataTemplate pages:UpdateCollectionItemPage}"
         Route="updateitem" />
 
+    <ShellContent
+        Title="Podsumowanie kolekcji"
+        ContentTemplate="{DataTemplate pages:CollectionSummary}"
+        Route="summary" />
+
 </Shell>

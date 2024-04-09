@@ -74,5 +74,10 @@ namespace CollectionsManager.Pages
 					"OK");
 			}
 		}
+
+		private void mainPage_importButton_Clicked(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

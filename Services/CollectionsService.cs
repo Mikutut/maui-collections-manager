@@ -53,12 +53,6 @@ namespace CollectionsManager.Services
 				throw new ArgumentException($"Collection with RefId: '{input.CollectionRefId}' does not exist.");
 			}
 
-			if(collection.Items
-				.FirstOrDefault(x => x.Name.Equals(input.Name)) != null)
-			{
-				throw new ArgumentException($"Collection already contains item with same name.");
-			}
-
 			CollectionItem newItem = new CollectionItem()
 			{
 				CollectionRefId = input.CollectionRefId,
@@ -488,8 +482,7 @@ namespace CollectionsManager.Services
 
 			loadedCollections.ForEach(c =>
 			{
-				if(collections.FirstOrDefault(x => x.CollectionRefId.Equals(c.CollectionRefId)
-					&& x.Name.Equals(c.Name)) != null)
+				if(collections.FirstOrDefault(x => x.CollectionRefId.Equals(c.CollectionRefId)) != null)
 				{
 					Debug.WriteLine($"Collection with RefId: '{c.CollectionRefId}' already loaded. Skipping...");
 				}
@@ -619,6 +612,13 @@ namespace CollectionsManager.Services
 				.ForEach(s => item.Statuses.Add(s));
 
 			return item;
+		}
+
+		public bool CheckIfCollectionItemExists(Collection collection, string itemName)
+		{
+			return collection.Items
+				.Where(x => x.Name.Equals(itemName))
+				.Any();
 		}
 
 		private void DisposeCollectionItem(CollectionItem item)

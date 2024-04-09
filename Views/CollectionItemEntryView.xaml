@@ -29,6 +29,8 @@
       Grid.Row="0"
       Grid.Column="0"
       Text="{Binding Name}"
+      HorizontalOptions="Center"
+      VerticalOptions="Center"
       HorizontalTextAlignment="Center"
       VerticalTextAlignment="Center" />
     <Label
@@ -36,6 +38,8 @@
       Grid.Row="0"
       Grid.Column="1"
       Text="{Binding Quantity}"
+      HorizontalOptions="Center"
+      VerticalOptions="Center"
       HorizontalTextAlignment="Center"
       VerticalTextAlignment="Center" />
     <Label
@@ -43,6 +47,8 @@
       Grid.Row="0"
       Grid.Column="2"
       Text="{Binding Rating}"
+      HorizontalOptions="Center"
+      VerticalOptions="Center"
       HorizontalTextAlignment="Center"
       VerticalTextAlignment="Center" />
     <CheckBox
@@ -50,6 +56,8 @@
       Grid.Row="0"
       Grid.Column="3"
       IsEnabled="False"
+      HorizontalOptions="Center"
+      VerticalOptions="Center"
       IsChecked="{Binding IsForSale}" />
     <StackLayout
       x:Name="collectionItemEntryView_buttonsLayout"

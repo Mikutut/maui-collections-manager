@@ -44,6 +44,11 @@ namespace CollectionsManager.Models
 		public ObservableCollection<CollectionItemStatus> Statuses
 		{
 			get => statuses;
+			set
+			{
+				statuses = value;
+				OnPropertyChanged("Statuses");
+			}
 		}
 
 		public string Name

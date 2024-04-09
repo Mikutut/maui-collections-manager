@@ -29,8 +29,8 @@ Ma takze byc mozliwosc jej edycji (dodawanie elementów, usuwanie oraz modyfikacj
       Moze byc to dana tekstowa, liczbowa lub zestaw wartosci do wyboru.
     - [X] Wyszarzenie i przeniesienie na koniec kolekcji elementów sprzedanych
     - [X] Mozliwosc dodania grafiki dla przedmiotu
-    - [ ] Upewnienie sie czy uzytkownik chce podac 2 raz taki sam element
+    - [X] Upewnienie sie czy uzytkownik chce podac 2 raz taki sam element
     - [ ] Mozliwosc exportu danych i importu danych o jednej kolekcji bez stratnie poprzez laczenie tego co juz jest
       z danymi, które otrzymuje program
-    - [ ] Mozliwosc generowania ekranu z podsumowaniem dla danej kolekcji z iloscia posiadanych przedmiotów, iloscia
+    - [X] Mozliwosc generowania ekranu z podsumowaniem dla danej kolekcji z iloscia posiadanych przedmiotów, iloscia
     przedmiotów sprzedanych i tych które chce sprzedac

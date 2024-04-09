@@ -93,6 +93,21 @@ public partial class NewCollectionItemPage : ContentPage, IQueryAttributable
 	{
 		try
 		{
+			bool nameTaken = _collectionsService.CheckIfCollectionItemExists(Collection, CreateCollectionItem.Name);
+
+			if(nameTaken)
+			{
+				var result = await DisplayAlert(
+					"Konfliktujące nazwy",
+					$"Nazwa '{CreateCollectionItem.Name}' jest już zajęta. Czy aby na pewno chcesz utworzyć przedmiot o takiej nazwie?",
+					"Tak", "Nie");
+
+				if(!result)
+				{
+					return;
+				}
+			}
+
 			_collectionsService.CreateCollectionItem(CreateCollectionItem);
 			_collectionsService.SaveCollectionsToFile(null);
 		}

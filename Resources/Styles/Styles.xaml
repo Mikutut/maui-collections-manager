@@ -443,7 +443,7 @@
       Value="{x:StaticResource AtomicTangerineLight}" />
     <Setter
       Property="TextColor"
-      Value="{x:StaticResource AtomicTangerineLight}" />
+      Value="{x:StaticResource White}" />
   </Style>
 
   <Style

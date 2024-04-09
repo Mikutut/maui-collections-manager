@@ -16,7 +16,8 @@
       Grid.Column="0"
       ColumnSpacing="10"
       HorizontalOptions="Fill"
-      VerticalOptions="Fill">
+      VerticalOptions="Fill"
+      Padding="20">
       <Label
         x:Name="newCollectionPage_nameLabel"
         Text="Nazwa kolekcji"
@@ -34,35 +35,32 @@
         VerticalTextAlignment="Center"
         HorizontalOptions="Fill"
         VerticalOptions="Center"
+        Margin="10, 0, 0, 0"
         Text="{Binding Path=Name,Mode=TwoWay}" />
     </Grid>
-    <Grid
-      x:Name="newCollectionPage_buttonsGrid"
-      ColumnSpacing="10"
-      RowDefinitions="*"
-      ColumnDefinitions="*, *"
+    <StackLayout
+      x:Name="newCollectionPage_buttonsLayout"
+      Orientation="Horizontal"
+      Spacing="10"
       Grid.Row="1"
       Grid.Column="0"
       VerticalOptions="Fill"
-      HorizontalOptions="Fill">
+      HorizontalOptions="Center"
+      Padding="10">
       <Button
         x:Name="newCollectionPage_cancelButton"
-        Grid.Row="0"
-        Grid.Column="0"
         Style="{StaticResource TertiaryButton}"
         Text="Anuluj"
-        HorizontalOptions="End"
+        HorizontalOptions="Center"
         VerticalOptions="Center"
         Clicked="newCollectionPage_cancelButton_Clicked" />
       <Button
         x:Name="newCollectionPage_submitButton"
-        Grid.Row="0"
-        Grid.Column="1"
         Style="{StaticResource PrimaryButton}"
         Text="Dodaj"
-        HorizontalOptions="Start"
+        HorizontalOptions="Center"
         VerticalOptions="Center"
         Clicked="newCollectionPage_submitButton_Clicked" />
-    </Grid>
+    </StackLayout>
   </Grid>
 </ContentPage>
