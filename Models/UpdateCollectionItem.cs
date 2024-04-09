@@ -20,6 +20,7 @@ namespace CollectionsManager.Models
 		private uint rating = 0;
 		private string? comment = null;
 		private bool isForSale = false;
+		private bool isSold = false;
 
 		public Guid CollectionItemRefId
 		{
@@ -113,6 +114,16 @@ namespace CollectionsManager.Models
 			{
 				isForSale = value;
 				OnPropertyChanged("IsForSale");
+			}
+		}
+
+		public bool IsSold
+		{
+			get => isSold;
+			set
+			{
+				isSold = value;
+				OnPropertyChanged("IsSold");
 			}
 		}
 

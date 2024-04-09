@@ -37,6 +37,8 @@ namespace CollectionsManager.Services
 				Name = input.Name
 			};
 
+			Collection.DEFAULT_ITEM_STATUSES.ForEach(s => newCollection.ItemStatuses.Add(s));
+
 			collections.Add(newCollection);
 
 			return newCollection;
@@ -272,6 +274,17 @@ namespace CollectionsManager.Services
 										itemStatuses.Add(status);
 									}
 
+									byte[]? imageData = null;
+
+									if (data[9].Equals("N/A"))
+									{
+										imageData = null;
+									}
+									else
+									{
+										imageData = CollectionItem.ConvertBase64ToImage(data[9]);
+									}
+
 									var item = new CollectionItem()
 									{
 										CollectionItemRefId = Guid.Parse(data[0]),
@@ -282,7 +295,7 @@ namespace CollectionsManager.Services
 										Comment = data[5],
 										IsForSale = bool.Parse(data[6]),
 										IsSold = bool.Parse(data[7]),
-										Image = CollectionItem.ConvertBase64ToImage(data[9])
+										Image = imageData
 									};
 
 									itemStatuses.ForEach(st => item.Statuses.Add(st));
@@ -383,6 +396,11 @@ namespace CollectionsManager.Services
 								if(!string.IsNullOrWhiteSpace(imageB64))
 								{
 									sw.Write(imageB64);
+									sw.Write(FileMarkers.COLUMN_SEPARATOR);
+								}
+								else
+								{
+									sw.Write("N/A");
 									sw.Write(FileMarkers.COLUMN_SEPARATOR);
 								}
 
@@ -591,6 +609,7 @@ namespace CollectionsManager.Services
 			item.Quantity = input.Quantity;
 			item.Rating = input.Rating;
 			item.IsForSale = input.IsForSale;
+			item.IsSold = input.IsSold;
 			item.Image = input.Image;
 
 			item.Statuses.Clear();

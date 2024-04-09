@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionsManager.Pages.NewCollectionItemPage"
+             Title="Nowy przedmiot"
+             x:Name="newCollectionItemPage">
+  <Grid
+    x:Name="newCollectionItemPage_mainGrid"
+    RowDefinitions="*, *, *, *, *, *, *, *"
+    ColumnDefinitions="*"
+    RowSpacing="5">
+    <Grid
+      x:Name="newCollectionItemPage_nameGrid"
+      Grid.Column="0"
+      Grid.Row="0"
+      RowDefinitions="*"
+      ColumnDefinitions="*, *">
+      <Label
+        x:Name="newCollectionItemPage_nameLabel"
+        Grid.Row="0"
+        Grid.Column="0"
+        Text="Nazwa"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+      <Entry
+        x:Name="newCollectionItemPage_nameEntry"
+        Text="{Binding Name}"
+        Grid.Row="0"
+        Grid.Column="1"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        VerticalOptions="Center"
+        HorizontalOptions="Fill" />
+    </Grid>
+    <Grid
+      x:Name="newCollectionItemPage_quantityGrid"
+      Grid.Column="0"
+      Grid.Row="1"
+      RowDefinitions="*"
+      ColumnDefinitions="*, Auto, *">
+      <Label
+        x:Name="newCollectionItemPage_quantityLabel"
+        Grid.Row="0"
+        Grid.Column="0"
+        Text="Ilość"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+      <Label
+        x:Name="newCollectionItemPage_quantityValueLabel"
+        Grid.Row="0"
+        Grid.Column="1"
+        Margin="10,0"
+        Text="{Binding Quantity}"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+      <Stepper
+        x:Name="newCollectionItemPage_quantityStepper"
+        Value="{Binding Quantity}"
+        Grid.Row="0"
+        Grid.Column="2"
+        VerticalOptions="Center"
+        HorizontalOptions="Fill" />
+    </Grid>
+    <Grid
+      x:Name="newCollectionItemPage_ratingGrid"
+      Grid.Column="0"
+      Grid.Row="2"
+      RowDefinitions="*"
+      ColumnDefinitions="*, Auto, *">
+      <Label
+        x:Name="newCollectionItemPage_ratingLabel"
+        Grid.Row="0"
+        Grid.Column="0"
+        Text="Ocena"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+      <Label
+        x:Name="newCollectionItemPage_ratingValueLabel"
+        Grid.Row="0"
+        Grid.Column="1"
+        Margin="10,0"
+        Text="{Binding Rating}"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+      <Stepper
+        x:Name="newCollectionItemPage_ratingStepper"
+        Value="{Binding Rating}"
+        Grid.Row="0"
+        Grid.Column="2"
+        VerticalOptions="Center"
+        HorizontalOptions="Fill" />
+    </Grid>
+    <Grid
+      x:Name="newCollectionItemPage_commentGrid"
+      Grid.Column="0"
+      Grid.Row="3"
+      RowDefinitions="*"
+      ColumnDefinitions="*, *">
+      <Label
+        x:Name="newCollectionItemPage_commentLabel"
+        Grid.Row="0"
+        Grid.Column="0"
+        Text="Komentarz"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+      <Entry
+        x:Name="newCollectionItemPage_commentEntry"
+        Text="{Binding Comment}"
+        Grid.Row="0"
+        Grid.Column="1"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        VerticalOptions="Center"
+        HorizontalOptions="Fill" />
+    </Grid>
+    <Grid
+      x:Name="newCollectionItemPage_isForSaleGrid"
+      Grid.Column="0"
+      Grid.Row="4"
+      RowDefinitions="*"
+      ColumnDefinitions="*, *">
+      <Label
+        x:Name="newCollectionItemPage_isForSaleLabel"
+        Grid.Row="0"
+        Grid.Column="0"
+        Text="Czy jest na sprzedaż?"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+      <CheckBox
+        x:Name="newCollectionItemPage_isForSaleCheckbox"
+        IsChecked="{Binding IsForSale}"
+        Grid.Row="0"
+        Grid.Column="1"
+        VerticalOptions="Center"
+        HorizontalOptions="Center" />
+    </Grid>
+    <Grid
+      x:Name="newCollectionItemPage_statusGrid"
+      Grid.Column="0"
+      Grid.Row="5"
+      RowDefinitions="*"
+      ColumnDefinitions="*, *">
+      <Label
+        x:Name="newCollectionItemPage_statusLabel"
+        Grid.Row="0"
+        Grid.Column="0"
+        Text="Status"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+      <Picker
+        x:Name="newCollectionItemPage_statusPicker"
+        SelectedIndexChanged="newCollectionItemPage_statusPicker_SelectedIndexChanged"
+        ItemDisplayBinding="{Binding Name}"
+        Grid.Row="0"
+        Grid.Column="1"
+        VerticalOptions="Center"
+        HorizontalOptions="Fill" />
+    </Grid>
+    <Grid
+      x:Name="newCollectionItemPage_imageGrid"
+      Grid.Column="0"
+      Grid.Row="6"
+      RowDefinitions="*"
+      ColumnDefinitions="*, *, *">
+      <Label
+        x:Name="newCollectionItemPage_imageLabel"
+        Grid.Row="0"
+        Grid.Column="0"
+        Text="Obrazek"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+      <Button
+        x:Name="newCollectionItemPage_imageChooseButton"
+        Text="Wybierz plik"
+        Style="{StaticResource TertiaryButton}"
+        Clicked="newCollectionItemPage_imageChooseButton_Clicked"
+        Grid.Row="0"
+        Grid.Column="1"
+        VerticalOptions="Center"
+        HorizontalOptions="Fill" />
+      <Button
+        x:Name="newCollectionItemPage_imageClearButton"
+        Text="Wyczyść"
+        Style="{StaticResource TertiaryButton}"
+        Clicked="newCollectionItemPage_imageClearButton_Clicked"
+        Grid.Row="0"
+        Grid.Column="2"
+        VerticalOptions="Center"
+        HorizontalOptions="Fill" />
+    </Grid>
+    <Grid
+      x:Name="newCollectionItemPage_buttonsGrid"
+      ColumnSpacing="10"
+      RowDefinitions="*"
+      ColumnDefinitions="*, *"
+      Grid.Row="7"
+      Grid.Column="0"
+      VerticalOptions="Fill"
+      HorizontalOptions="Fill">
+      <Button
+        x:Name="newCollectionItemPage_cancelButton"
+        Grid.Row="0"
+        Grid.Column="0"
+        Style="{StaticResource TertiaryButton}"
+        Text="Anuluj"
+        HorizontalOptions="End"
+        VerticalOptions="Center"
+        Clicked="newCollectionItemPage_cancelButton_Clicked" />
+      <Button
+        x:Name="newCollectionItemPage_submitButton"
+        Grid.Row="0"
+        Grid.Column="1"
+        Style="{StaticResource PrimaryButton}"
+        Text="Dodaj"
+        HorizontalOptions="Start"
+        VerticalOptions="Center"
+        Clicked="newCollectionItemPage_submitButton_Clicked" />
+    </Grid>
+  </Grid>
+</ContentPage>

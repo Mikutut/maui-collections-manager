@@ -37,10 +37,14 @@
   <Color x:Key="SpaceCadet">#1E2749</Color>
   <Color x:Key="SpaceCadetLight">#293665</Color>
   <Color x:Key="SpaceCadetLight2">#2F3D73</Color>
+  <Color x:Key="SpaceCadetDark">#13182d</Color>
+  <Color x:Key="SpaceCadetDark2">#070911</Color>
 
   <SolidColorBrush x:Key="SpaceCadetBrush" Color="{StaticResource SpaceCadet}"/>
   <SolidColorBrush x:Key="SpaceCadetLightBrush" Color="{StaticResource SpaceCadetLight}"/>
   <SolidColorBrush x:Key="SpaceCadetLight2Brush" Color="{StaticResource SpaceCadetLight2}"/>
+  <SolidColorBrush x:Key="SpaceCadetDarkBrush" Color="{StaticResource SpaceCadetDark}"/>
+  <SolidColorBrush x:Key="SpaceCadetDark2Brush" Color="{StaticResource SpaceCadetDark2}"/>
 
   <Color x:Key="AtomicTangerine">#DE8f6E</Color>
   <Color x:Key="AtomicTangerineLight">#e5a88e</Color>

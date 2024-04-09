@@ -13,7 +13,7 @@ namespace CollectionsManager.Models
 		private Guid collectionRefId = Guid.NewGuid();
 		private string name = string.Empty;
 		private ObservableCollection<CollectionItem> items = new ObservableCollection<CollectionItem>();
-		private ObservableCollection<CollectionItemStatus> itemStatuses = new ObservableCollection<CollectionItemStatus>(DEFAULT_ITEM_STATUSES);
+		private ObservableCollection<CollectionItemStatus> itemStatuses = new ObservableCollection<CollectionItemStatus>();
 
 		public Guid CollectionRefId
 		{

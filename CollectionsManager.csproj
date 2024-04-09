@@ -58,6 +58,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\CollectionItemsList.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\UpdateCollectionItemPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\NewCollectionItemPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\NewCollectionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -70,6 +79,9 @@
 	  <MauiXaml Update="Views\CollectionEntryView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\CollectionItemEntryView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -78,6 +90,12 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
     <PackageReference Include="CommunityToolkit.Maui" Version="8.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Pages\UpdateCollectionItemPage.xaml.cs">
+	    <DependentUpon>UpdateCollectionItemPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>

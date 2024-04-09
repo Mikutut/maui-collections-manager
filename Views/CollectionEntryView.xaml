@@ -14,15 +14,14 @@
       Grid.Row="0"
       Grid.Column="0"
       Text="{Binding Name}"
-      Style="{StaticResource SecondaryButton}"
+      Style="{StaticResource TertiaryButton}"
       Clicked="collectionEntryView_button_Clicked" />
     <Button
       x:Name="collectionEntryView_deleteButton"
       Grid.Row="0"
       Grid.Column="1"
+      Style="{StaticResource DangerButton}"
       ImageSource="{FontImageSource Glyph=,FontFamily=FontAwesomeSolid}"
-      TextColor="{StaticResource White}"
-      BackgroundColor="{StaticResource DangerRed}"
       Clicked="collectionEntryView_deleteButton_Clicked" />
   </Grid>
 </ContentView>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:v="clr-namespace:CollectionsManager.Views"
+             x:Class="CollectionsManager.Pages.CollectionItemsList"
+             Title="Lista przedmiotów"
+             x:Name="collectionItemsList">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem
+      x:Name="collectionItemsList_goBackButton"
+      IconImageSource="{FontImageSource Glyph=,FontFamily=FontAwesomeSolid}"
+      Text="Powrót"
+      Clicked="collectionItemsList_goBackButton_Clicked" />
+  </ContentPage.ToolbarItems>
+  <Grid
+    x:Name="collectionItemsList_mainGrid"
+    RowDefinitions="Auto, *"
+    ColumnDefinitions="*"
+    RowSpacing="20">
+    <Grid
+      x:Name="collectionItemsList_buttonsGrid"
+      Grid.Row="0"
+      Grid.Column="0"
+      RowDefinitions="*"
+      ColumnDefinitions="*"
+      ColumnSpacing="10">
+      <Button
+        x:Name="collectionItemsList_newCollectionButton"
+        Style="{StaticResource PrimaryButton}"
+        Grid.Row="0"
+        Grid.Column="0"
+        Text="Dodaj przedmiot"
+        FontSize="Medium"
+        Margin="10"
+        MaximumWidthRequest="250"
+        Clicked="collectionItemsList_newCollectionButton_Clicked" />
+    </Grid>
+    <CollectionView
+      x:Name="collectionItemsList_collectionView"
+      Grid.Row="1"
+      Grid.Column="0"
+      ItemsSource="{Binding ItemsList}">
+      <CollectionView.ItemsLayout>
+        <LinearItemsLayout
+          Orientation="Vertical"
+          ItemSpacing="20" />
+      </CollectionView.ItemsLayout>
+      <CollectionView.EmptyView>
+        <StackLayout
+          x:Name="collectionItemsList_noCollectionsView"
+          Orientation="Vertical"
+          HorizontalOptions="Center"
+          VerticalOptions="Center">
+          <Label
+            x:Name="collectionItemsList_noCollectionsLabel"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            Text="Brak przedmiotów do wyświetlenia."
+            FontSize="Large" />
+        </StackLayout>
+      </CollectionView.EmptyView>
+      <CollectionView.Header>
+        <Grid
+          x:Name="collectionItemsList_collectionViewHeader"
+          RowDefinitions="*"
+          ColumnDefinitions="*, *, *, *, *"
+          ColumnSpacing="5">
+          <Label
+            x:Name="collectionItemsList_headerNameLabel"
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="Nazwa"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+          <Label
+            x:Name="collectionItemsList_headerQuantityLabel"
+            Grid.Row="0"
+            Grid.Column="1"
+            Text="Ilość"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+          <Label
+            x:Name="collectionItemsList_headerRatingLabel"
+            Grid.Row="0"
+            Grid.Column="2"
+            Text="Ocena"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+          <Label
+            x:Name="collectionItemsList_headerIsForSaleLabel"
+            Grid.Row="0"
+            Grid.Column="3"
+            Text="Na sprzedaż?"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+          <Label
+            x:Name="collectionItemsList_headerActionsLabel"
+            Grid.Row="0"
+            Grid.Column="4"
+            Text="Akcje"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+        </Grid>
+      </CollectionView.Header>
+      <CollectionView.ItemTemplate>
+        <DataTemplate>
+          <v:CollectionItemEntryView
+            CollectionItem="{Binding .}"
+            OnDelete="CollectionItemEntryView_OnDelete"
+            OnUpdate="CollectionItemEntryView_OnUpdate" />
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
+  </Grid>
+</ContentPage>

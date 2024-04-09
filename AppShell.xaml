@@ -17,4 +17,19 @@
         ContentTemplate="{DataTemplate pages:NewCollectionPage}"
         Route="newcollection" />
 
+    <ShellContent
+        Title="Lista przedmiotów"
+        ContentTemplate="{DataTemplate pages:CollectionItemsList}"
+        Route="itemslist" />
+
+    <ShellContent
+        Title="Dodaj przedmiot"
+        ContentTemplate="{DataTemplate pages:NewCollectionItemPage}"
+        Route="newitem" />
+
+    <ShellContent
+        Title="Edytuj przedmiot"
+        ContentTemplate="{DataTemplate pages:UpdateCollectionItemPage}"
+        Route="updateitem" />
+
 </Shell>

@@ -49,9 +49,13 @@ namespace CollectionsManager.Pages
 			await Shell.Current.GoToAsync("//newcollection");
 		}
 
-		private void CollectionEntryView_OnClick(Collection obj)
+		private async void CollectionEntryView_OnClick(Collection obj)
 		{
-
+			var args = new Dictionary<string, object>()
+			{
+				{ "Collection", obj }
+			};
+			await Shell.Current.GoToAsync("//itemslist", args);
 		}
 
 		private async void CollectionEntryView_OnDelete(Collection obj)

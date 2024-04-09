@@ -49,7 +49,7 @@
         x:Name="newCollectionPage_cancelButton"
         Grid.Row="0"
         Grid.Column="0"
-        Style="{StaticResource SecondaryButton}"
+        Style="{StaticResource TertiaryButton}"
         Text="Anuluj"
         HorizontalOptions="End"
         VerticalOptions="Center"
