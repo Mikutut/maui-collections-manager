@@ -64,6 +64,9 @@
 	  <MauiXaml Update="Pages\CollectionSummary.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\UpdateCollectionPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\UpdateCollectionItemPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -96,6 +99,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\UpdateCollectionPage.xaml.cs">
+	    <DependentUpon>UpdateCollectionPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\UpdateCollectionItemPage.xaml.cs">
 	    <DependentUpon>UpdateCollectionItemPage.xaml</DependentUpon>
 	  </Compile>

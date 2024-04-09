@@ -25,6 +25,6 @@ namespace CollectionsManager.Services
 		public void SaveCollectionsToFile(string? path);
 		public Collection LoadCollectionFromFile(string path);
 		public void LoadCollectionsFromFile(string? path, bool mergeDiff = false);
-		public bool CheckIfCollectionItemExists(Collection collection, string itemName);
+		public int GetCollisions(Collection collection, string itemName);
 	}
 }

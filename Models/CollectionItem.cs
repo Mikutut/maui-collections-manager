@@ -15,6 +15,7 @@ namespace CollectionsManager.Models
 		private ObservableCollection<CollectionItemStatus> statuses = new ObservableCollection<CollectionItemStatus>();
 		private string name = string.Empty;
 		private byte[]? image;
+		private ImageSource? imageSource;
 		private int quantity = 0;
 		private uint rating = 0;
 		private string? comment = null;
@@ -67,7 +68,27 @@ namespace CollectionsManager.Models
 			set
 			{
 				image = value;
+
+				if(value != null)
+				{
+					ImageSource = ImageSource.FromStream(() => CollectionItem.GetImageStream(value));
+				}
+				else
+				{
+					ImageSource = null;
+				}
+
 				OnPropertyChanged("Image");
+			}
+		}
+
+		public ImageSource? ImageSource
+		{
+			get => imageSource;
+			set
+			{
+				imageSource = value;
+				OnPropertyChanged("ImageSource");
 			}
 		}
 
@@ -134,6 +155,16 @@ namespace CollectionsManager.Models
 		}
 
 		public event PropertyChangedEventHandler? PropertyChanged;
+
+		public static MemoryStream? GetImageStream(byte[]? image)
+		{
+			if(image == null)
+			{
+				return null;
+			}
+
+			return new MemoryStream(image);
+		}
 
 		public static string? ConvertImageToBase64(CollectionItem item)
 		{

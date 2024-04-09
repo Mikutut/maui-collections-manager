@@ -22,6 +22,7 @@ public partial class CollectionEntryView : ContentView
 
 	public event Action<Collection>? OnClick;
 	public event Action<Collection>? OnDelete;
+	public event Action<Collection>? OnUpdate;
 
 	public CollectionEntryView()
 	{
@@ -37,5 +38,10 @@ public partial class CollectionEntryView : ContentView
 	private void collectionEntryView_deleteButton_Clicked(object sender, EventArgs e)
 	{
 		OnDelete?.Invoke(Collection);
+	}
+
+	private void collectionEntryView_updateButton_Clicked(object sender, EventArgs e)
+	{
+		OnUpdate?.Invoke(Collection);
 	}
 }

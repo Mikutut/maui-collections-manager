@@ -6,7 +6,7 @@
   <Grid
     x:Name="collectionEntryView_mainGrid"
     RowDefinitions="*"
-    ColumnDefinitions="*, Auto"
+    ColumnDefinitions="*, Auto, Auto"
     ColumnSpacing="5"
     Margin="5">
     <Button
@@ -17,9 +17,16 @@
       Style="{StaticResource TertiaryButton}"
       Clicked="collectionEntryView_button_Clicked" />
     <Button
-      x:Name="collectionEntryView_deleteButton"
+      x:Name="collectionEntryView_updateButton"
       Grid.Row="0"
       Grid.Column="1"
+      Style="{StaticResource SecondaryButton}"
+      ImageSource="{FontImageSource Glyph=,FontFamily=FontAwesomeSolid}"
+      Clicked="collectionEntryView_updateButton_Clicked" />
+    <Button
+      x:Name="collectionEntryView_deleteButton"
+      Grid.Row="0"
+      Grid.Column="2"
       Style="{StaticResource DangerButton}"
       ImageSource="{FontImageSource Glyph=,FontFamily=FontAwesomeSolid}"
       Clicked="collectionEntryView_deleteButton_Clicked" />

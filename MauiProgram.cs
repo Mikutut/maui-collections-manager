@@ -44,6 +44,7 @@ namespace CollectionsManager
 			builder.Services
 				.AddSingleton<AppShell>()
 				.AddSingleton<NewCollectionPage>()
+				.AddSingleton<UpdateCollectionPage>()
 				.AddSingleton<CollectionItemsList>()
 				.AddSingleton<NewCollectionItemPage>()
 				.AddSingleton<UpdateCollectionItemPage>()

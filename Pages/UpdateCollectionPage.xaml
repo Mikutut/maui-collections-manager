@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionsManager.Pages.UpdateCollectionPage"
+             Title="Edytuj kolekcję"
+             x:Name="updateCollectionPage">
+  <Grid
+    x:Name="updateCollectionPage_mainGrid"
+    RowDefinitions="*, Auto"
+    ColumnDefinitions="*">
+    <Grid
+      x:Name="updateCollectionPage_nameGrid"
+      RowDefinitions="*"
+      ColumnDefinitions="Auto, *"
+      Grid.Row="0"
+      Grid.Column="0"
+      ColumnSpacing="10"
+      HorizontalOptions="Fill"
+      VerticalOptions="Fill"
+      Padding="20">
+      <Label
+        x:Name="updateCollectionPage_nameLabel"
+        Text="Nazwa kolekcji"
+        Grid.Row="0"
+        Grid.Column="0"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+      <Entry
+        x:Name="updateCollectionPage_nameEntry"
+        Grid.Row="0"
+        Grid.Column="1"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        HorizontalOptions="Fill"
+        VerticalOptions="Center"
+        Margin="10, 0, 0, 0"
+        Text="{Binding Path=Name,Mode=TwoWay}" />
+    </Grid>
+    <StackLayout
+      x:Name="updateCollectionPage_buttonsLayout"
+      Orientation="Horizontal"
+      Spacing="10"
+      Grid.Row="1"
+      Grid.Column="0"
+      VerticalOptions="Fill"
+      HorizontalOptions="Center"
+      Padding="10">
+      <Button
+        x:Name="updateCollectionPage_cancelButton"
+        Style="{StaticResource TertiaryButton}"
+        Text="Anuluj"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        Clicked="updateCollectionPage_cancelButton_Clicked" />
+      <Button
+        x:Name="updateCollectionPage_submitButton"
+        Style="{StaticResource PrimaryButton}"
+        Text="Zapisz"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        Clicked="updateCollectionPage_submitButton_Clicked" />
+    </StackLayout>
+  </Grid>
+</ContentPage>

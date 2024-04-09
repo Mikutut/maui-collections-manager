@@ -18,6 +18,11 @@
         Route="newcollection" />
 
     <ShellContent
+        Title="Edycja kolekcji"
+        ContentTemplate="{DataTemplate pages:UpdateCollectionPage}"
+        Route="updatecollection" />
+
+    <ShellContent
         Title="Lista przedmiotów"
         ContentTemplate="{DataTemplate pages:CollectionItemsList}"
         Route="itemslist" />

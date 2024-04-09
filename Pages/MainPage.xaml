@@ -46,39 +46,52 @@
         HorizontalOptions="Center"
         Clicked="mainPage_importButton_Clicked" />
     </StackLayout>
-    <CollectionView
-      x:Name="mainPage_collectionsView"
+    <Grid
+      x:Name="mainPage_collectionViewWrapperGrid"
       Grid.Row="2"
       Grid.Column="0"
-      ItemsSource="{Binding Collections}">
-      <CollectionView.ItemsLayout>
-        <LinearItemsLayout
-          Orientation="Vertical" />
-      </CollectionView.ItemsLayout>
-      <CollectionView.EmptyView>
-        <StackLayout
-          x:Name="mainPage_noCollectionsView"
-          Orientation="Vertical"
-          HorizontalOptions="Center"
-          VerticalOptions="Center">
-          <Label
-            x:Name="mainPage_noCollectionsLabel"
+      RowDefinitions="*"
+      ColumnDefinitions="*">
+      <CollectionView
+        x:Name="mainPage_collectionsView"
+        Grid.Row="0"
+        Grid.Column="0"
+        VerticalOptions="Fill"
+        HorizontalOptions="Fill"
+        ItemsSource="{Binding Collections}">
+        <CollectionView.ItemsLayout>
+          <LinearItemsLayout
+            Orientation="Vertical" />
+        </CollectionView.ItemsLayout>
+        <CollectionView.EmptyView>
+          <Grid
+            x:Name="mainPage_noCollectionsGrid"
+            RowDefinitions="*"
+            ColumnDefinitions="*"
             HorizontalOptions="Fill"
-            VerticalOptions="Fill"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            Text="Brak kolekcji do wyświetlenia."
-            FontSize="Large" />
-        </StackLayout>
-      </CollectionView.EmptyView>
-      <CollectionView.ItemTemplate>
-        <DataTemplate>
-          <v:CollectionEntryView
-            Collection="{Binding Path=.}"
-            OnClick="CollectionEntryView_OnClick"
-            OnDelete="CollectionEntryView_OnDelete" />
-        </DataTemplate>
-      </CollectionView.ItemTemplate>
-    </CollectionView>
+            VerticalOptions="Center">
+            <Label
+              x:Name="mainPage_noCollectionsLabel"
+              Grid.Row="0"
+              Grid.Column="0"
+              HorizontalOptions="Fill"
+              VerticalOptions="Fill"
+              HorizontalTextAlignment="Center"
+              VerticalTextAlignment="Center"
+              Text="Brak kolekcji do wyświetlenia."
+              FontSize="Large" />
+          </Grid>
+        </CollectionView.EmptyView>
+        <CollectionView.ItemTemplate>
+          <DataTemplate>
+            <v:CollectionEntryView
+              Collection="{Binding Path=.}"
+              OnClick="CollectionEntryView_OnClick"
+              OnDelete="CollectionEntryView_OnDelete"
+              OnUpdate="CollectionEntryView_OnUpdate"/>
+          </DataTemplate>
+        </CollectionView.ItemTemplate>
+      </CollectionView>
+    </Grid>
   </Grid>
 </ContentPage>

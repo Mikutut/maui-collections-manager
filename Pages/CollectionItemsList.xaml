@@ -62,92 +62,113 @@
         VerticalOptions="Center"
         Clicked="collectionItemsList_exportButton_Clicked" />
     </StackLayout>
-    <CollectionView
-      x:Name="collectionItemsList_collectionView"
+    <Grid
+      x:Name="collectionItemsList_collectionViewWrapperGrid"
+      RowDefinitions="*"
+      ColumnDefinitions="*"
       Grid.Row="1"
-      Grid.Column="0"
-      ItemsSource="{Binding ItemsList}">
-      <CollectionView.ItemsLayout>
-        <LinearItemsLayout
-          Orientation="Vertical"
-          ItemSpacing="5" />
-      </CollectionView.ItemsLayout>
-      <CollectionView.EmptyView>
-        <StackLayout
-          x:Name="collectionItemsList_noCollectionsView"
-          Orientation="Vertical"
-          HorizontalOptions="Center"
-          VerticalOptions="Center">
-          <Label
-            x:Name="collectionItemsList_noCollectionsLabel"
+      Grid.Column="0">
+      <CollectionView
+        x:Name="collectionItemsList_collectionView"
+        Grid.Row="0"
+        Grid.Column="0"
+        HorizontalOptions="Fill"
+        VerticalOptions="Fill"
+        ItemsSource="{Binding ItemsList}">
+        <CollectionView.ItemsLayout>
+          <LinearItemsLayout
+            Orientation="Vertical"
+            ItemSpacing="5" />
+        </CollectionView.ItemsLayout>
+        <CollectionView.EmptyView>
+          <Grid
+            x:Name="collectionItemsList_noCollectionsGrid"
+            RowDefinitions="*"
+            ColumnDefinitions="*"
             HorizontalOptions="Fill"
-            VerticalOptions="Fill"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            Text="Brak przedmiotów do wyświetlenia."
-            FontSize="Large" />
-        </StackLayout>
-      </CollectionView.EmptyView>
-      <CollectionView.Header>
-        <Grid
-          x:Name="collectionItemsList_collectionViewHeader"
-          RowDefinitions="*"
-          ColumnDefinitions="*, *, *, *, *">
-          <Label
-            x:Name="collectionItemsList_headerNameLabel"
-            Grid.Row="0"
-            Grid.Column="0"
-            Text="Nazwa"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            HorizontalOptions="Center"
-            VerticalOptions="Center" />
-          <Label
-            x:Name="collectionItemsList_headerQuantityLabel"
-            Grid.Row="0"
-            Grid.Column="1"
-            Text="Ilość"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            HorizontalOptions="Center"
-            VerticalOptions="Center" />
-          <Label
-            x:Name="collectionItemsList_headerRatingLabel"
-            Grid.Row="0"
-            Grid.Column="2"
-            Text="Ocena"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            HorizontalOptions="Center"
-            VerticalOptions="Center" />
-          <Label
-            x:Name="collectionItemsList_headerIsForSaleLabel"
-            Grid.Row="0"
-            Grid.Column="3"
-            Text="Na sprzedaż?"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            HorizontalOptions="Center"
-            VerticalOptions="Center" />
-          <Label
-            x:Name="collectionItemsList_headerActionsLabel"
-            Grid.Row="0"
-            Grid.Column="4"
-            Text="Akcje"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            HorizontalOptions="Center"
-            VerticalOptions="Center" />
-        </Grid>
-      </CollectionView.Header>
-      <CollectionView.ItemTemplate>
-        <DataTemplate>
-          <v:CollectionItemEntryView
-            CollectionItem="{Binding .}"
-            OnDelete="CollectionItemEntryView_OnDelete"
-            OnUpdate="CollectionItemEntryView_OnUpdate" />
-        </DataTemplate>
-      </CollectionView.ItemTemplate>
-    </CollectionView>
+            VerticalOptions="Center">
+            <Label
+              x:Name="collectionItemsList_noCollectionsLabel"
+              Grid.Row="0"
+              Grid.Column="0"
+              HorizontalOptions="Fill"
+              VerticalOptions="Fill"
+              HorizontalTextAlignment="Center"
+              VerticalTextAlignment="Center"
+              Text="Brak przedmiotów do wyświetlenia."
+              FontSize="Large" />
+          </Grid>
+        </CollectionView.EmptyView>
+        <CollectionView.Header>
+          <Grid
+            x:Name="collectionItemsList_collectionViewHeader"
+            RowDefinitions="*"
+            ColumnDefinitions="*, *, *, *, *, *">
+            <Label
+              x:Name="collectionItemsList_headerImageLabel"
+              Grid.Row="0"
+              Grid.Column="0"
+              Text="Obrazek"
+              HorizontalTextAlignment="Center"
+              VerticalTextAlignment="Center"
+              HorizontalOptions="Center"
+              VerticalOptions="Center" />
+            <Label
+              x:Name="collectionItemsList_headerNameLabel"
+              Grid.Row="0"
+              Grid.Column="1"
+              Text="Nazwa"
+              HorizontalTextAlignment="Center"
+              VerticalTextAlignment="Center"
+              HorizontalOptions="Center"
+              VerticalOptions="Center" />
+            <Label
+              x:Name="collectionItemsList_headerQuantityLabel"
+              Grid.Row="0"
+              Grid.Column="2"
+              Text="Ilość"
+              HorizontalTextAlignment="Center"
+              VerticalTextAlignment="Center"
+              HorizontalOptions="Center"
+              VerticalOptions="Center" />
+            <Label
+              x:Name="collectionItemsList_headerRatingLabel"
+              Grid.Row="0"
+              Grid.Column="3"
+              Text="Ocena"
+              HorizontalTextAlignment="Center"
+              VerticalTextAlignment="Center"
+              HorizontalOptions="Center"
+              VerticalOptions="Center" />
+            <Label
+              x:Name="collectionItemsList_headerIsForSaleLabel"
+              Grid.Row="0"
+              Grid.Column="4"
+              Text="Na sprzedaż?"
+              HorizontalTextAlignment="Center"
+              VerticalTextAlignment="Center"
+              HorizontalOptions="Center"
+              VerticalOptions="Center" />
+            <Label
+              x:Name="collectionItemsList_headerActionsLabel"
+              Grid.Row="0"
+              Grid.Column="5"
+              Text="Akcje"
+              HorizontalTextAlignment="Center"
+              VerticalTextAlignment="Center"
+              HorizontalOptions="Center"
+              VerticalOptions="Center" />
+          </Grid>
+        </CollectionView.Header>
+        <CollectionView.ItemTemplate>
+          <DataTemplate>
+            <v:CollectionItemEntryView
+              CollectionItem="{Binding .}"
+              OnDelete="CollectionItemEntryView_OnDelete"
+              OnUpdate="CollectionItemEntryView_OnUpdate" />
+          </DataTemplate>
+        </CollectionView.ItemTemplate>
+      </CollectionView>
+    </Grid>
   </Grid>
 </ContentPage>

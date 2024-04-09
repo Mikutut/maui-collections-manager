@@ -21,13 +21,23 @@
   <Grid
     x:Name="collectionItemEntryView_mainGrid"
     RowDefinitions="*"
-    ColumnDefinitions="*, *, *, *, Auto"
+    ColumnDefinitions="*, *, *, *, *, Auto"
     ColumnSpacing="5"
     RowSpacing="5">
+    <Image
+      x:Name="collectionItemEntryView_image"
+      Grid.Row="0"
+      Grid.Column="0"
+      VerticalOptions="Fill"
+      HorizontalOptions="Fill"
+      WidthRequest="100"
+      HeightRequest="100"
+      Source="{Binding ImageSource}"
+      Aspect="AspectFill" />
     <Label
       x:Name="collectionItemEntryView_nameLabel"
       Grid.Row="0"
-      Grid.Column="0"
+      Grid.Column="1"
       Text="{Binding Name}"
       HorizontalOptions="Center"
       VerticalOptions="Center"
@@ -36,7 +46,7 @@
     <Label
       x:Name="collectionItemEntryView_quantityLabel"
       Grid.Row="0"
-      Grid.Column="1"
+      Grid.Column="2"
       Text="{Binding Quantity}"
       HorizontalOptions="Center"
       VerticalOptions="Center"
@@ -45,7 +55,7 @@
     <Label
       x:Name="collectionItemEntryView_ratingLabel"
       Grid.Row="0"
-      Grid.Column="2"
+      Grid.Column="3"
       Text="{Binding Rating}"
       HorizontalOptions="Center"
       VerticalOptions="Center"
@@ -54,7 +64,7 @@
     <CheckBox
       x:Name="collectionItemEntryView_isForSaleLabel"
       Grid.Row="0"
-      Grid.Column="3"
+      Grid.Column="4"
       IsEnabled="False"
       HorizontalOptions="Center"
       VerticalOptions="Center"
@@ -62,7 +72,7 @@
     <StackLayout
       x:Name="collectionItemEntryView_buttonsLayout"
       Grid.Row="0"
-      Grid.Column="4"
+      Grid.Column="5"
       Orientation="Horizontal"
       Spacing="10"
       HorizontalOptions="Fill"

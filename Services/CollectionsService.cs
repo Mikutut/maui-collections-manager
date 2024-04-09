@@ -544,7 +544,7 @@ namespace CollectionsManager.Services
 			}
 			else
 			{
-				RecursiveDelete(pathInfo);
+				PurgeDirectory(pathInfo);
 			}
 
 			try
@@ -563,7 +563,7 @@ namespace CollectionsManager.Services
 			}
 			catch(Exception)
 			{
-				RecursiveDelete(pathInfo);
+				PurgeDirectory(pathInfo);
 				throw;
 			}
 		}
@@ -647,17 +647,28 @@ namespace CollectionsManager.Services
 			return item;
 		}
 
-		public bool CheckIfCollectionItemExists(Collection collection, string itemName)
+		public int GetCollisions(Collection collection, string itemName)
 		{
 			return collection.Items
 				.Where(x => x.Name.Equals(itemName))
-				.Any();
+				.Count();
 		}
 
 		private void DisposeCollectionItem(CollectionItem item)
 		{
 			item.Image = null;
 			item.Statuses.Clear();
+		}
+
+		private static void PurgeDirectory(DirectoryInfo baseDir)
+		{
+			if (!baseDir.Exists)
+				return;
+			
+			foreach (var dir in baseDir.EnumerateDirectories())
+			{
+				RecursiveDelete(dir);
+			}
 		}
 
 		private static void RecursiveDelete(DirectoryInfo baseDir)

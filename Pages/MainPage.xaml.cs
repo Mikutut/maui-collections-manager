@@ -110,5 +110,15 @@ namespace CollectionsManager.Pages
 					"OK");
 			}
 		}
+
+		private async void CollectionEntryView_OnUpdate(Collection obj)
+		{
+			var args = new Dictionary<string, object>()
+			{
+				{ "Collection", obj }
+			};
+
+			await Shell.Current.GoToAsync("//updatecollection", args);
+		}
 	}
 }

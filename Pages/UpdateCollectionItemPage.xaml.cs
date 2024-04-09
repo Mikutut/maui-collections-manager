@@ -110,7 +110,7 @@ public partial class UpdateCollectionItemPage : ContentPage, IQueryAttributable
 	{
 		try
 		{
-			bool nameTaken = _collectionsService.CheckIfCollectionItemExists(Collection, UpdateCollectionItem.Name);
+			bool nameTaken = _collectionsService.GetCollisions(Collection, UpdateCollectionItem.Name) >= 2;
 
 			if(nameTaken)
 			{
@@ -163,11 +163,23 @@ public partial class UpdateCollectionItemPage : ContentPage, IQueryAttributable
 				if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
 					result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
 				{
-					using var stream = await result.OpenReadAsync();
-					using var ms = new MemoryStream();
+					List<byte> imageData = new List<byte>();
+					using (var stream = await result.OpenReadAsync())
+					{
+						var data = stream.ReadByte();
 
-					stream.CopyTo(ms);
-					UpdateCollectionItem.Image = ms.ToArray();
+						while(data != -1)
+						{
+							imageData.Add((byte)data);
+							data = stream.ReadByte();
+						}
+					}
+
+					UpdateCollectionItem.Image = imageData.ToArray();
+					await DisplayAlert(
+						"Wybieranie pliku graficznego",
+						"Pomyślnie zaimportowano plik graficzny",
+						"OK");
 				}
 			}
 		}
@@ -182,8 +194,12 @@ public partial class UpdateCollectionItemPage : ContentPage, IQueryAttributable
 		}
 	}
 
-	private void updateCollectionItemPage_imageClearButton_Clicked(object sender, EventArgs e)
+	private async void updateCollectionItemPage_imageClearButton_Clicked(object sender, EventArgs e)
 	{
 		UpdateCollectionItem.Image = null;
+		await DisplayAlert(
+			"Usuwanie grafiki",
+			"Pomyślnie usunięto grafikę z przedmiotu",
+			"OK");
 	}
 }
