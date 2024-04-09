@@ -1,6 +1,7 @@
 ﻿using CollectionsManager.Services;
 using CollectionsManager.Models;
 using System.Collections.ObjectModel;
+using CommunityToolkit.Maui.Storage;
 
 namespace CollectionsManager.Pages
 {
@@ -75,9 +76,39 @@ namespace CollectionsManager.Pages
 			}
 		}
 
-		private void mainPage_importButton_Clicked(object sender, EventArgs e)
+		private async void mainPage_importButton_Clicked(object sender, EventArgs e)
 		{
+			var result = await FolderPicker.Default.PickAsync();
 
+			if(result.IsSuccessful)
+			{
+				var path = result.Folder.Path;
+
+				try
+				{
+					Collection loadedCollection = _collectionsService.LoadCollectionFromFile(path);
+					_collectionsService.AddCollection(loadedCollection, true);
+
+					await DisplayAlert(
+						"Import kolekcji",
+						$"Kolekcja '{loadedCollection.Name}' została pomyślnie zaimportowana!",
+						"OK");
+				}
+				catch(Exception ex)
+				{
+					await DisplayAlert(
+						"Import kolekcji",
+						$"Nie udało się zaimportować kolekcji.\n\n{ex.Message}",
+						"OK");
+				}
+			}
+			else
+			{
+				await DisplayAlert(
+					"Import kolekcji",
+					"Wystąpił błąd podczas wybierania folderu, bądź operacja została przerwana.",
+					"OK");
+			}
 		}
 	}
 }

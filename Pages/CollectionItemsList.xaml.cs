@@ -1,5 +1,6 @@
-using CollectionsManager.Models;
+﻿using CollectionsManager.Models;
 using CollectionsManager.Services;
+using CommunityToolkit.Maui.Storage;
 using System.Collections.ObjectModel;
 
 namespace CollectionsManager.Pages;
@@ -117,8 +118,37 @@ public partial class CollectionItemsList : ContentPage, IQueryAttributable
 		await Shell.Current.GoToAsync("//summary", args);
 	}
 
-	private void collectionItemsList_exportButton_Clicked(object sender, EventArgs e)
+	private async void collectionItemsList_exportButton_Clicked(object sender, EventArgs e)
 	{
+		var result = await FolderPicker.Default.PickAsync();
 
+		if(result.IsSuccessful)
+		{
+			var path = result.Folder.Path;
+
+			try
+			{
+				_collectionsService.SaveCollectionToFile(Collection, path);
+
+				await DisplayAlert(
+					"Eksport kolekcji",
+					$"Kolekcja '{Collection.Name}' została pomyślnie wyeksportowana do: '{path}'",
+					"OK");
+			}
+			catch(Exception ex)
+			{
+				await DisplayAlert(
+					"Eksport kolekcji",
+					$"Nie udało się wyeksportować kolekcji.\n\n{ex.Message}",
+					"OK");
+			}
+		}
+		else
+		{
+			await DisplayAlert(
+				"Eksport kolekcji",
+				"Wystąpił błąd podczas wybierania folderu, bądź operacja została przerwana.",
+				"OK");
+		}
 	}
 }

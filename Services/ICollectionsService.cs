@@ -11,6 +11,7 @@ namespace CollectionsManager.Services
 	public interface ICollectionsService
 	{
 		public List<Collection> GetCollections();
+		public void AddCollection(Collection collection, bool mergeDiff = false);
 		public Collection CreateCollection(CreateCollection input);
 		public Collection UpdateCollection(UpdateCollection input);
 		public void DeleteCollection(Guid collectionId);
@@ -23,7 +24,7 @@ namespace CollectionsManager.Services
 		public void SaveCollectionToFile(Collection collection, string path);
 		public void SaveCollectionsToFile(string? path);
 		public Collection LoadCollectionFromFile(string path);
-		public void LoadCollectionsFromFile(string? path);
+		public void LoadCollectionsFromFile(string? path, bool mergeDiff = false);
 		public bool CheckIfCollectionItemExists(Collection collection, string itemName);
 	}
 }

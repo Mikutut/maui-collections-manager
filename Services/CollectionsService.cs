@@ -18,6 +18,28 @@ namespace CollectionsManager.Services
 
 		}
 
+		public void AddCollection(Collection collection, bool mergeDiff = false)
+		{
+			var existingCollection = collections.FirstOrDefault(x => x.CollectionRefId.Equals(collection.CollectionRefId)
+				|| x.Name.Equals(collection.Name));
+
+			if(existingCollection != null)
+			{
+				if(mergeDiff)
+				{
+					MergeCollections(existingCollection, collection);
+				}
+				else
+				{
+					throw new ArgumentException($"Collection with RefId: '{collection.CollectionRefId}' or name: '{collection.Name}' already exists and merging differences has been disabled.");
+				}
+			}
+			else
+			{
+				collections.Add(collection);
+			}
+		}
+
 		public Collection CreateCollection(CreateCollection input)
 		{
 			if(string.IsNullOrWhiteSpace(input.Name))
@@ -448,7 +470,7 @@ namespace CollectionsManager.Services
 			}
 		}
 
-		public void LoadCollectionsFromFile(string? path)
+		public void LoadCollectionsFromFile(string? path, bool mergeDiff = false)
 		{
 			string _path = (!string.IsNullOrWhiteSpace(path))
 				? path
@@ -482,9 +504,20 @@ namespace CollectionsManager.Services
 
 			loadedCollections.ForEach(c =>
 			{
-				if(collections.FirstOrDefault(x => x.CollectionRefId.Equals(c.CollectionRefId)) != null)
+				var existingCollection = collections
+					.FirstOrDefault(x => x.CollectionRefId.Equals(c.CollectionRefId)
+						|| x.Name.Equals(c.Name));
+
+				if(existingCollection != null)
 				{
-					Debug.WriteLine($"Collection with RefId: '{c.CollectionRefId}' already loaded. Skipping...");
+					if(mergeDiff)
+					{
+						AddCollection(c, true);
+					}
+					else
+					{
+						Debug.WriteLine($"Collection with RefId: '{c.CollectionRefId}' already loaded. Skipping...");
+					}
 				}
 				else
 				{
@@ -637,6 +670,61 @@ namespace CollectionsManager.Services
 				RecursiveDelete(dir);
 			}
 			baseDir.Delete(true);
+		}
+
+		private void MergeCollections(Collection oldCollection, Collection newCollection)
+		{
+			oldCollection.Name = newCollection.Name;
+
+			foreach(var itemStatus in newCollection.ItemStatuses)
+			{
+				var existingStatus = oldCollection.ItemStatuses
+					.FirstOrDefault(x => x.Id.Equals(itemStatus.Id)
+						|| x.Name.Equals(itemStatus.Name));
+
+				if(existingStatus != null)
+				{
+					existingStatus.Name = itemStatus.Name;
+				}
+				else
+				{
+					oldCollection.ItemStatuses.Add(itemStatus);
+				}
+			}
+
+			foreach(var item in newCollection.Items)
+			{
+				var existingItem = oldCollection.Items
+					.FirstOrDefault(x => x.CollectionItemRefId.Equals(item.CollectionItemRefId)
+						|| x.Name.Equals(item.Name));
+
+				if(existingItem != null)
+				{
+					existingItem.Name = item.Name;
+					existingItem.Quantity = item.Quantity;
+					existingItem.Rating = item.Rating;
+					existingItem.Comment = item.Comment;
+					existingItem.IsForSale = item.IsForSale;
+					existingItem.IsSold = item.IsSold;
+					existingItem.Image = item.Image;
+
+					foreach(var itemStatus in item.Statuses)
+					{
+						var existingStatus = existingItem.Statuses
+							.FirstOrDefault(x => x.Id.Equals(itemStatus.Id)
+								|| x.Name.Equals(itemStatus.Name));
+
+						if(existingStatus == null)
+						{
+							oldCollection.ItemStatuses.Add(itemStatus);
+						}
+					}
+				}
+				else
+				{
+					oldCollection.Items.Add(item);
+				}
+			}
 		}
 	}
 }
