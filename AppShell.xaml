@@ -8,8 +8,13 @@
     Title="CollectionsManager">
 
     <ShellContent
-        Title="Home"
+        Title="Lista kolekcji"
         ContentTemplate="{DataTemplate pages:MainPage}"
-        Route="MainPage" />
+        Route="home" />
+
+    <ShellContent
+        Title="Dodaj kolekcję"
+        ContentTemplate="{DataTemplate pages:NewCollectionPage}"
+        Route="newcollection" />
 
 </Shell>

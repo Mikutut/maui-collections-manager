@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:v="clr-namespace:CollectionsManager.Views"
              x:Class="CollectionsManager.Pages.MainPage"
+             Title="Lista kolekcji"
              x:Name="mainPage">
   <Grid
     x:Name="mainPage_mainGrid"
@@ -23,6 +25,41 @@
       Text="Dodaj kolekcję"
       FontSize="Medium"
       Margin="10"
-      MaximumWidthRequest="200" />
+      MaximumWidthRequest="200"
+      Clicked="mainPage_newCollectionButton_Clicked" />
+    <CollectionView
+      x:Name="mainPage_collectionsView"
+      Grid.Row="2"
+      Grid.Column="0"
+      ItemsSource="{Binding Collections}">
+      <CollectionView.ItemsLayout>
+        <LinearItemsLayout
+          Orientation="Vertical" />
+      </CollectionView.ItemsLayout>
+      <CollectionView.EmptyView>
+        <StackLayout
+          x:Name="mainPage_noCollectionsView"
+          Orientation="Vertical"
+          HorizontalOptions="Center"
+          VerticalOptions="Center">
+          <Label
+            x:Name="mainPage_noCollectionsLabel"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            Text="Brak kolekcji do wyświetlenia."
+            FontSize="Large" />
+        </StackLayout>
+      </CollectionView.EmptyView>
+      <CollectionView.ItemTemplate>
+        <DataTemplate>
+          <v:CollectionEntryView
+            Collection="{Binding Path=.}"
+            OnClick="CollectionEntryView_OnClick"
+            OnDelete="CollectionEntryView_OnDelete" />
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
   </Grid>
 </ContentPage>

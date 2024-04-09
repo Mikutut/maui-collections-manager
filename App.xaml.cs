@@ -24,7 +24,6 @@ namespace CollectionsManager
 			window.Created += (s, e) =>
 			{
 				Debug.WriteLine($"App data path: '{AppConsts.AppDataPath}'");
-				_collectionsService.LoadCollectionsFromFile(null);
 			};
 
 			return window;

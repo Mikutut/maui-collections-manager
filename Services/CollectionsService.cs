@@ -144,6 +144,11 @@ namespace CollectionsManager.Services
 
 			try
 			{
+				if(!File.Exists(collectionFile))
+				{
+					throw new IOException("Collection main file does not exist.");
+				}
+
 				using(var collectionFileStream = File.OpenRead(collectionFile))
 				{
 					using(var sr = new StreamReader(collectionFileStream))
@@ -181,109 +186,115 @@ namespace CollectionsManager.Services
 					}
 				}
 
-				using (var collectionItemStatusesStream = File.OpenRead(collectionItemStatusesFile))
+				if(File.Exists(collectionItemStatusesFile))
 				{
-					using (var sr = new StreamReader(collectionItemStatusesStream))
+					using (var collectionItemStatusesStream = File.OpenRead(collectionItemStatusesFile))
 					{
-						string? line = sr.ReadLine();
-						bool eofReached = false;
-
-						if(line == null || !line.Equals(FileMarkers.SOF_MARKER))
+						using (var sr = new StreamReader(collectionItemStatusesStream))
 						{
-							throw new IOException("Provided collection file is not valid.");
-						}
+							string? line = sr.ReadLine();
+							bool eofReached = false;
 
-						while((line = sr.ReadLine()) != null)
-						{
-							if(line.Equals(FileMarkers.EOF_MARKER))
+							if(line == null || !line.Equals(FileMarkers.SOF_MARKER))
 							{
-								eofReached = true;
-								break;
+								throw new IOException("Provided collection file is not valid.");
 							}
 
-							string[] data = line.Split(FileMarkers.COLUMN_SEPARATOR);
-
-							var itemStatus = new CollectionItemStatus()
+							while((line = sr.ReadLine()) != null)
 							{
-								Id = Guid.Parse(data[0]),
-								Name = data[1]
-							};
+								if(line.Equals(FileMarkers.EOF_MARKER))
+								{
+									eofReached = true;
+									break;
+								}
 
-							collection.ItemStatuses.Add(itemStatus);
-						}
+								string[] data = line.Split(FileMarkers.COLUMN_SEPARATOR);
 
-						if(!eofReached)
-						{
-							throw new IOException("No EOF marker found - file may be corrupted.");
+								var itemStatus = new CollectionItemStatus()
+								{
+									Id = Guid.Parse(data[0]),
+									Name = data[1]
+								};
+
+								collection.ItemStatuses.Add(itemStatus);
+							}
+
+							if(!eofReached)
+							{
+								throw new IOException("No EOF marker found - file may be corrupted.");
+							}
 						}
 					}
 				}
 
-				using (var collectionItemsStream = File.OpenRead(collectionItemsFile))
+				if(File.Exists(collectionItemsFile))
 				{
-					using(var sr = new StreamReader(collectionItemsStream))
+					using (var collectionItemsStream = File.OpenRead(collectionItemsFile))
 					{
-						string? line = sr.ReadLine();
-						bool eofReached = false;
-
-						if(line == null || !line.Equals(FileMarkers.SOF_MARKER))
+						using(var sr = new StreamReader(collectionItemsStream))
 						{
-							throw new IOException("Provided collection file is not valid.");
-						}
+							string? line = sr.ReadLine();
+							bool eofReached = false;
 
-						while((line = sr.ReadLine()) != null)
-						{
-							if(line.Equals(FileMarkers.EOF_MARKER))
+							if(line == null || !line.Equals(FileMarkers.SOF_MARKER))
 							{
-								eofReached = true;
-								break;
+								throw new IOException("Provided collection file is not valid.");
 							}
 
-							if(line != null)
+							while((line = sr.ReadLine()) != null)
 							{
-								string[] data = line.Split(FileMarkers.COLUMN_SEPARATOR);
-								Guid[] itemStatusesGuids = data[8]
-									.Split(FileMarkers.ITEM_STATUSES_SEPARATOR)
-									.Select(s => Guid.Parse(s))
-									.ToArray();
-
-								List<CollectionItemStatus> itemStatuses = new List<CollectionItemStatus>();
-
-								foreach(Guid guid in itemStatusesGuids)
+								if(line.Equals(FileMarkers.EOF_MARKER))
 								{
-									CollectionItemStatus? status = collection.ItemStatuses
-										.FirstOrDefault(x => x.Id.Equals(guid));
-
-									if(status == null)
-									{
-										throw new IOException("Decoupled item status Guid found.");
-									}
-
-									itemStatuses.Add(status);
+									eofReached = true;
+									break;
 								}
 
-								var item = new CollectionItem()
+								if(line != null)
 								{
-									CollectionItemRefId = Guid.Parse(data[0]),
-									CollectionRefId = collection.CollectionRefId,
-									Name = data[2],
-									Quantity = int.Parse(data[3]),
-									Rating = uint.Parse(data[4]),
-									Comment = data[5],
-									IsForSale = bool.Parse(data[6]),
-									IsSold = bool.Parse(data[7]),
-									Image = CollectionItem.ConvertBase64ToImage(data[9])
-								};
+									string[] data = line.Split(FileMarkers.COLUMN_SEPARATOR);
+									Guid[] itemStatusesGuids = data[8]
+										.Split(FileMarkers.ITEM_STATUSES_SEPARATOR)
+										.Select(s => Guid.Parse(s))
+										.ToArray();
 
-								itemStatuses.ForEach(st => item.Statuses.Add(st));
+									List<CollectionItemStatus> itemStatuses = new List<CollectionItemStatus>();
 
-								collection.Items.Add(item);
+									foreach(Guid guid in itemStatusesGuids)
+									{
+										CollectionItemStatus? status = collection.ItemStatuses
+											.FirstOrDefault(x => x.Id.Equals(guid));
+
+										if(status == null)
+										{
+											throw new IOException("Decoupled item status Guid found.");
+										}
+
+										itemStatuses.Add(status);
+									}
+
+									var item = new CollectionItem()
+									{
+										CollectionItemRefId = Guid.Parse(data[0]),
+										CollectionRefId = collection.CollectionRefId,
+										Name = data[2],
+										Quantity = int.Parse(data[3]),
+										Rating = uint.Parse(data[4]),
+										Comment = data[5],
+										IsForSale = bool.Parse(data[6]),
+										IsSold = bool.Parse(data[7]),
+										Image = CollectionItem.ConvertBase64ToImage(data[9])
+									};
+
+									itemStatuses.ForEach(st => item.Statuses.Add(st));
+
+									collection.Items.Add(item);
+								}
 							}
-						}
 
-						if(!eofReached)
-						{
-							throw new IOException("No EOF marker found - file may be corrupted.");
+							if(!eofReached)
+							{
+								throw new IOException("No EOF marker found - file may be corrupted.");
+							}
 						}
 					}
 				}
@@ -385,9 +396,9 @@ namespace CollectionsManager.Services
 
 				if(collection.ItemStatuses.Count > 0)
 				{
-					using (var collectionItemsFileStream = File.OpenWrite(collectionItemsFile))
+					using (var collectionItemStatusesFileStream = File.OpenWrite(collectionItemStatusesFile))
 					{
-						using (var sw = new StreamWriter(collectionItemsFileStream))
+						using (var sw = new StreamWriter(collectionItemStatusesFileStream))
 						{
 							sw.WriteLine(FileMarkers.SOF_MARKER);
 
@@ -469,6 +480,8 @@ namespace CollectionsManager.Services
 					collections.Add(c);
 				}
 			});
+
+			Debug.WriteLine($"Loaded {loadedCollections.Count} collections");
 		}
 
 		public void SaveCollectionsToFile(string? path)
@@ -494,7 +507,14 @@ namespace CollectionsManager.Services
 			{
 				foreach(var collection in collections)
 				{
-					SaveCollectionToFile(collection, Collection.GetCollectionPath(collection, _path));
+					var collectionPath = Collection.GetCollectionPath(collection, _path);
+
+					if(!Directory.Exists(collectionPath))
+					{
+						Directory.CreateDirectory(collectionPath);
+					}
+
+					SaveCollectionToFile(collection, collectionPath);
 				}
 			}
 			catch(Exception)

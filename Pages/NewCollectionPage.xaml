@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionsManager.Pages.NewCollectionPage"
+             Title="Dodaj kolekcję"
+             x:Name="newCollectionPage">
+  <Grid
+    x:Name="newCollectionPage_mainGrid"
+    RowDefinitions="*, Auto"
+    ColumnDefinitions="*">
+    <Grid
+      x:Name="newCollectionPage_nameGrid"
+      RowDefinitions="*"
+      ColumnDefinitions="Auto, *"
+      Grid.Row="0"
+      Grid.Column="0"
+      ColumnSpacing="10"
+      HorizontalOptions="Fill"
+      VerticalOptions="Fill">
+      <Label
+        x:Name="newCollectionPage_nameLabel"
+        Text="Nazwa kolekcji"
+        Grid.Row="0"
+        Grid.Column="0"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+      <Entry
+        x:Name="newCollectionPage_nameEntry"
+        Grid.Row="0"
+        Grid.Column="1"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        HorizontalOptions="Fill"
+        VerticalOptions="Center"
+        Text="{Binding Path=Name,Mode=TwoWay}" />
+    </Grid>
+    <Grid
+      x:Name="newCollectionPage_buttonsGrid"
+      ColumnSpacing="10"
+      RowDefinitions="*"
+      ColumnDefinitions="*, *"
+      Grid.Row="1"
+      Grid.Column="0"
+      VerticalOptions="Fill"
+      HorizontalOptions="Fill">
+      <Button
+        x:Name="newCollectionPage_cancelButton"
+        Grid.Row="0"
+        Grid.Column="0"
+        Style="{StaticResource SecondaryButton}"
+        Text="Anuluj"
+        HorizontalOptions="End"
+        VerticalOptions="Center"
+        Clicked="newCollectionPage_cancelButton_Clicked" />
+      <Button
+        x:Name="newCollectionPage_submitButton"
+        Grid.Row="0"
+        Grid.Column="1"
+        Style="{StaticResource PrimaryButton}"
+        Text="Dodaj"
+        HorizontalOptions="Start"
+        VerticalOptions="Center"
+        Clicked="newCollectionPage_submitButton_Clicked" />
+    </Grid>
+  </Grid>
+</ContentPage>

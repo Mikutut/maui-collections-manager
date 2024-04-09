@@ -54,6 +54,9 @@
   <SolidColorBrush x:Key="AtomicTangerineDarkBrush" Color="{StaticResource AtomicTangerineDark}" />
   <SolidColorBrush x:Key="AtomicTangerineDark2Brush" Color="{StaticResource AtomicTangerineDark2}" />
 
+  <Color x:Key="DangerRed">#CC0000</Color>
+  <SolidColorBrush x:Key="DangerRedBrush" Color="{StaticResource DangerRed}" />
+
   <Color x:Key="DarkGray">#272727</Color>
   <Color x:Key="Dark2Gray">#1D1D1D</Color>
 

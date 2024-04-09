@@ -18,9 +18,9 @@ namespace CollectionsManager
 				{
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-					fonts.AddFont("FontAwesome 6 Brands-Regular-400.otf", "FontAwesomeBrands");
-					fonts.AddFont("FontAwesome 6 Free-Regular-400.otf", "FontAwesome");
-					fonts.AddFont("FontAwesome 6 Free-Solid-900.otf", "FontAwesomeSolid");
+					fonts.AddFont("Font Awesome 6 Brands-Regular-400.otf", "FontAwesomeBrands");
+					fonts.AddFont("Font Awesome 6 Free-Regular-400.otf", "FontAwesome");
+					fonts.AddFont("Font Awesome 6 Free-Solid-900.otf", "FontAwesomeSolid");
 				})
 				.RegisterAppClass()
 				.RegisterServices()
@@ -43,6 +43,7 @@ namespace CollectionsManager
 		{
 			builder.Services
 				.AddSingleton<AppShell>()
+				.AddSingleton<NewCollectionPage>()
 				.AddSingleton<MainPage>();
 
 			return builder;
